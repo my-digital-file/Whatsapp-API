@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Marketing Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Hind', sans-serif; scroll-behavior: smooth; }
+        .hero-bg { background: radial-gradient(circle at top right, #065f46, #022c22); }
+        .feature-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .feature-card:hover { transform: translateY(-10px); }
+        .hidden-content { display: none; }
+        .ad-fade { transition: opacity 0.5s ease; }
+        .video-box { 
+    aspect-ratio: 16 / 9; 
+    background: #000; 
+    border-radius: 1.5rem; 
+    overflow: hidden; 
+}
+/* इसमें iframe के लिए कोई खास सेटिंग नहीं थी */
+
+        
+        .card-emerald { border-top: 5px solid #10b981; background: #f0fdf4; }
+        .card-blue { border-top: 5px solid #3b82f6; background: #eff6ff; }
+        .card-amber { border-top: 5px solid #f59e0b; background: #fffbeb; }
+        .card-purple { border-top: 5px solid #8b5cf6; background: #f5f3ff; }
+        .card-rose { border-top: 5px solid #f43f5e; background: #fff1f2; }
+        .card-indigo { border-top: 5px solid #6366f1; background: #eef2ff; }
+        .card-cyan { border-top: 5px solid #06b6d4; background: #ecfeff; }
+        .card-orange { border-top: 5px solid #f97316; background: #fff7ed; }
+
+        .more-service-tag {
+            position: absolute; top: -12px; left: 20px; background: #10b981; color: white;
+            padding: 2px 12px; border-radius: 6px; font-size: 10px; font-weight: 900;
+            text-transform: uppercase; z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 pb-28">
+
+    <script>
+        // ============================================================
+        // SITE_CONFIG: यहाँ से आप सब कुछ बदल सकते हैं
+        // ============================================================
+        const SITE_CONFIG = {
+            // 1. साइट का नाम (Prefix = हरा हिस्सा, Suffix = काला हिस्सा)
+            siteNamePrefix: "auto whatsapp", 
+            siteNameSuffix: "API", 
+
+            // 2. मुख्य व्हाट्सएप नंबर
+            whatsappNumber: "917851848679",
+            
+            // 3. वीडियो लिंक्स (YouTube या Google Drive Preview)
+            video1: "https://www.w3schools.com/html/mov_bbb.mp4", 
+            video2: "https://drive.google.com/file/d/1WIXvqa1y0FZFPd4awUeBWSleyF2IXj0R/preview",
+
+            // 4. बीच वाले विज्ञापन (जितने चाहें उतने जोड़ें)
+            midAds: [
+                { hi: "इस सॉफ्टवेयर में एक साथ हजारों मैसेज भेज सकते हैं।", en: "send thousend of messege in one click", btnHi: "मुझे मैसेज करे", btnEn: "chat me whatsapp", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "अभी 20% डिस्काउंट में सॉफ्टवेयर दे रहे हैं।", en: "20% Discount Offer today sell", btnHi: "अधिक जाने", btnEn: "See more", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "हमसे व्हाट्सएप पर जुड़ें", en: "Join us on WhatsApp", btnHi: "मैसेज व्हाट्सएप", btnEn: "chat me whatsapp", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "अपना डिजिटल गोल्ड कार्ड बनवाए मात्र 49रु में", en: "make your digital gold card only 49 rupice", btnHi: "डेमो भेजो", btnEn: "see demo", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+digital+gold+card+demo*+🙏🏻🙏🏻" },
+                { hi: "अपनी खुद की कस्टमाइज वेबसाइट बनवाए सस्ते में", en: "make your costmise websit chipest price", btnHi: "डेमो भेजो", btnEn: "see demo", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*i+want+my+costmise+websit*+🙏🏻🙏🏻" },
+                
+            // नया विज्ञापन जोड़ने के लिए ऊपर वाली लाइन को कॉपी करके कोमा (,) के बाद पेस्ट करें
+            ],
+
+            // 5. नीचे वाले विज्ञापन (यहाँ भी आप बढ़ा सकते हैं)
+            bottomAds: [
+                { hi: "अपना डिजिटल गोल्ड कार्ड बनवाए मात्र 49रु में", en: "make your digital gold card only 49 rupice", btnHi: "डेमो भेजो", btnEn: "see demo", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+digital+gold+card+demo*+🙏🏻🙏🏻" },
+                { hi: "हमसे व्हाट्सएप पर जुड़ें", en: "Join us on WhatsApp", btnHi: "मैसेज व्हाट्सएप", btnEn: "chat me whatsapp", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "अभी 20% डिस्काउंट में सॉफ्टवेयर दे रहे हैं।", en: "20% Discount Offer today sell", btnHi: "अधिक जाने", btnEn: "See more", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "इस सॉफ्टवेयर में एक साथ हजारों मैसेज भेज सकते हैं।", en: "send thousend of messege in one click", btnHi: "मुझे मैसेज करे", btnEn: "chat me whatsapp", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+whatsapp+api+ditail+sar*+🙏🏻🙏🏻" },
+                { hi: "अपनी खुद की कस्टमाइज वेबसाइट बनवाए सस्ते में", en: "make your costmise websit chipest price", btnHi: "डेमो भेजो", btnEn: "see demo", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*i+want+my+costmise+websit*+🙏🏻🙏🏻" },
+            ],
+
+            // 6. मुख्य फीचर्स की जानकारी
+            features: [
+                { id: 1, color: "card-emerald", icon: "fa-paper-plane", hi: "बल्क सेंडर", en: "Bulk Sender", line1Hi: "हजारों नंबरों पर एक साथ मैसेज भेजें।", line1En: "Send messages to thousands of numbers at once.", moreHi: "एक्सेल फ़ाइल सपोर्ट।\nपर्सनलाइज्ड मैसेजिंग।\nमल्टी-मीडिया अटैचमेंट।\nडिलीवरी रिपोर्ट के साथ।", moreEn: "Excel file support.\nPersonalized messaging.\nMulti-media attachments.\nWith delivery reports." },
+                { id: 2, color: "card-blue", icon: "fa-robot", hi: "AI चैटबॉट", en: "AI Chatbot", line1Hi: "24/7 ऑटो रिप्लाई सिस्टम सेट करें।", line1En: "Set up 24/7 auto-reply system.", moreHi: "कीवर्ड आधारित रिप्लाई।\nबटन मैसेज सपोर्ट।\nवेलकम मैसेज फीचर।\nस्मार्ट कन्वर्सेशन फ्लो।", moreEn: "Keyword based replies.\nButton message support.\nWelcome message feature.\nSmart conversation flow." },
+                { id: 3, color: "card-amber", icon: "fa-users", hi: "ग्रुप ग्रैबर", en: "Group Grabber", line1Hi: "ग्रुप मेंबर्स के नंबर तुरंत निकालें।", line1En: "Extract group member numbers instantly.", moreHi: "एक क्लिक में एक्सपोर्ट।\nअनलिमिटेड ग्रुप सपोर्ट।\nएक्सेल/CSV फॉर्मेट।\nसेफ और फ़ास्ट।", moreEn: "One-click export.\nUnlimited group support.\nExcel/CSV formats.\nSafe and fast." },
+                { id: 4, color: "card-purple", icon: "fa-filter", hi: "नंबर फिल्टर", en: "Number Filter", line1Hi: "नंबरों की एक्टिविटी चेक करें।", line1En: "Check number activity status.", moreHi: "व्हाट्सएप नंबर वैलिडेशन।\nहाई स्पीड स्कैनिंग।\nबल्क फिल्टरिंग।\nअपना समय बचाएं।", moreEn: "WhatsApp validation.\nHigh speed scanning.\nBulk filtering.\nSave your time." },
+                { id: 5, color: "card-rose", icon: "fa-shield-alt", hi: "एंटी-ब्लॉक", en: "Anti-Block", line1Hi: "नंबर ब्लॉक होने से बचाएं।", line1En: "Protect numbers from blocking.", moreHi: "स्मार्ट स्लीप मोड।\nमल्टी-अकाउंट रोटेशन।\nह्यूमन लाइक टाइपिंग।\nएडवांस डिले सेटिंग्स।", moreEn: "Smart sleep mode.\nMulti-account rotation.\nHuman-like typing.\nAdvance delay settings." },
+                { id: 6, color: "card-indigo", icon: "fa-calendar-alt", hi: "शेड्यूलिंग", en: "Scheduling", line1Hi: "मैसेज भेजने का समय तय करें।", line1En: "Schedule your sending time.", moreHi: "ऑटो सेंडिंग फीचर।\nमल्टीपल कैंपेन।\nएडिट और अपडेट।\nSET & FORGET।", moreEn: "Auto sending feature.\nMultiple campaigns.\nEdit and update.\nSet and forget." },
+                { id: 7, color: "card-cyan", icon: "fa-mouse-pointer", hi: "बटन मैसेज", en: "Button Message", line1Hi: "क्लिकेबल बटन वाले मैसेज भेजें।", line1En: "Send clickable button messages.", moreHi: "कॉल टू एक्शन बटन।\nवेबसाइट लिंक बटन।\nक्विक रिप्लाई बटन।\nहाई एंगेजमेंट रेट।", moreEn: "Call to action buttons.\nWebsite link buttons.\nQuick reply buttons.\nHigh engagement rate." },
+                { id: 8, color: "card-orange", icon: "fa-images", hi: "मीडिया मार्केटिंग", en: "Media Marketing", line1Hi: "फोटो और वीडियो कैंपेन चलाएं।", line1En: "Run photo and video campaigns.", moreHi: "HD क्वालिटी सपोर्ट।\nकैप्शन के साथ सेंडिंग।\nPDF और फाइल शेयरिंग।\nआसान मीडिया मैनेजमेंट।", moreEn: "HD quality support.\nSend with captions.\nPDF & file sharing.\nEasy media management." }
+            ],
+
+            // 7. प्लान्स की जानकारी (कीमत और विवरण)
+            plansData: [
+                { id: "starter", color: "card-slate", hi: "बेसिक प्लान", en: "Starter Plan", price: "999", durationHi: "/ महीने", durationEn: "/ monthly", descHi: "छोटे बिजनेस के लिए बेहतरीन शुरुआत। इसमें आपको बल्क मैसेजिंग, ऑटो रिप्लाई, मैसेज में लिंक, कॉल, एक्शन बटन की सुविधा मिलती है।", descEn: "Great start for small businesses. Includes basic bulk messaging,auto replay,action link buttan features." },
+                { id: "pro", color: "card-emerald", hi: "प्रोफेशनल प्लान", en: "Professional Plan", price: "1,999", durationHi: "/ साल", durationEn: "/ Year", descHi: "हमारा सबसे लोकप्रिय प्लान। इसमें आपको ऑटो चैटबॉट और सभी प्रीमियम फीचर्स मिलते हैं।", descEn: "Our most popular plan. Includes AI Chatbot and all premium features." },
+                { id: "lifetime", color: "card-slate", hi: "लाइफटाइम प्लान", en: "Lifetime Plan", price: "4,999", durationHi: "/ हमेशा के लिए", durationEn: "/ Lifetime", descHi: "एक बार भुगतान करें और हमेशा इस्तेमाल करें। इसमें आपको रिसेलर राइट्स और VIP सपोर्ट मिलता है।", descEn: "Pay once and use forever. Includes reseller rights and VIP support." }
+            ],
+
+            // 8. अन्य सेवाएँ (फोटो और लिंक यहाँ से बदलें)
+            otherServices: [
+                { color: "card-blue", hi: "🌟घर बैठे निशुल्क पुस्तक मंगवाए बिल्कुल फ्री में🌟", en: "SEO Service", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoUtiFojVel60_CZJYXfRErbBC0Hna04gHskBuVvKtiDbnVoqdByk2Sq3Ohz_39mvt105VJLBT9hkqSFMyvlNjpbnzPEshmC_f2fsFgxP9hyLBe-SmcELw0W1m5PHMy_DHLvcouuhJgh4tDR5FIDAJathJOCgllNHTdabIVd_RdK9mIUhbmnpH9iZOcso/s1280/IMG_20251125_172039.jpg", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*i+need+free+gyan+ganga+book*+🙏🏻🙏🏻" },
+                { color: "card-emerald", hi: "💢वेरीफाइड ब्लू टिक के साथ 🌟अपना डिजिटल गोल्ड कार्ड बनवाए 💢", en: "make your blue tick verifide premium digital id card chipest price", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQ8N8R2j6SH7NzSthCMa-0a9a_1cl7iv4b1P61uUT92wHYyeGLelGdgLoJoaNA7y5nLj49cEiabioFi3Oe1OX9Dn6mZAuDWUD-cgyRZujdmKkfS89swYPoqmuSHjNKU22yNQTCrhyCxzLy7iSLRB9jaW80J1Hj6WiToxE2k8ZTGKnmDQCyDnhjAT039DY/s692/WhatsApp%20Image%202026-01-16%20at%203.25.34%20PM.jpeg", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*make+digi+gold+card*+🙏🏻🙏🏻" },
+                { color: "card-amber", hi: "अपनी खुद की कस्टमाइज वेबसाइट बनवाए", en: "make your landing costam disain", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwmf67pIKUeBla3bXuAkji13aJysHVo7Fj5v7MfTs9-wHmtyCSyh-rIT1NnAALlD_Kf0PVfrD5Y0HsJ4ws4MBGX28h_fR1N1f6w5fK0D8_c-JMThB1dswlJXaYP9l_aF0RgXTLlKYaKtLF1haRCSp2Y8DIEOSmUCbs0JpHRAFJ-NYziZspJZK0IspHsFs/s1105/IMG_20260109_232134.jpg", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*make+my+costem+dizain+sar*+🙏🏻🙏🏻" },
+                { color: "card-purple", hi: "एक करोड़ वेरीफाइड एरिया और सर्विस वाइस डाटा प्राप्त करें और बिजनेस only 199", en: "1 caror area and sarvise vise data only 199", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHceQgEnwmQvo8t7hizZr5z5_1tnVKbcPmfTdPtUU629rk_NAQIrnUJeXiZKLmkteV0Kx8a7yECHtdwSTny4mIuERNpZsfK5udPrpCtwwCOpkXN9c8CQGIHzmsOwMNvP6zkD2Xl7-FBAnibUKRs0wJcNq6yrdlzG5QJxjKVMiUN82MjP9W9_cABQKUtJM/s1536/IMG-20260113-WA0030.jpg", link: "Wa.me/917851848679?text=`I+visit+in+whatsapp+api+site`+*send+1+caror+data+sar*+🙏🏻🙏🏻" }
+            ]
+        };
+
+        let currentLang = 'hi';
+
+        function getWALink(suffix) {
+            let msg = `I visit whatsapp API site ${suffix}`;
+            return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 h-20 flex items-center px-4">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <span class="text-2xl font-black text-emerald-600"><span id="navPrefix"></span><span id="navSuffix" class="text-slate-800"></span></span>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleLang()" id="langSwitcher" class="bg-slate-100 px-4 py-1.5 rounded-full font-bold text-xs border border-slate-200 uppercase">ENGLISH / हिंदी</button>
+                <a href="javascript:location.href=getWALink('Navbar')" id="navContact" class="bg-emerald-600 text-white px-5 py-2 rounded-xl font-bold text-sm" data-hi="संपर्क करें" data-en="Contact Us">संपर्क करें</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg text-white py-24 text-center px-4">
+        <h1 class="text-5xl md:text-7xl font-black mb-6" data-hi="व्हाट्सएप मार्केटिंग प्रो" data-en="WhatsApp Marketing Pro">व्हाट्सएप मार्केटिंग प्रो</h1>
+        <p class="text-xl opacity-80 max-w-2xl mx-auto" data-hi="अपने बिजनेस को ऑटोमेशन और बल्क मैसेजिंग के साथ बढ़ाएं।" data-en="Grow your business with automation and bulk messaging.">अपने बिजनेस को ऑटोमेशन और बल्क मैसेजिंग के साथ बढ़ाएं।</p>
+    </section>
+
+    <!-- 1. Features Section -->
+    <section id="features" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16 underline decoration-emerald-500 underline-offset-8" data-hi="पावरफुल फीचर्स" data-en="Powerful Features">पावरफुल फीचर्स</h2>
+            <div id="featureGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- 2. Middle Ad Bar -->
+    <div class="bg-emerald-700 py-6 overflow-hidden relative shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center text-white">
+            <div class="flex items-center space-x-4">
+                <span class="bg-white text-emerald-700 font-black px-3 py-1 rounded-lg text-xs" data-hi="सर्विस" data-en="sarvice">ऑफर</span>
+                <p id="midAdText" class="text-sm md:text-lg font-bold ad-fade">लोड हो रहा है...</p>
+            </div>
+            <a id="midAdBtn" href="#" class="bg-white text-emerald-700 px-6 py-2 rounded-xl font-black text-xs uppercase shadow-lg">विजिट</a>
+        </div>
+    </div>
+
+    <!-- 3. Video Section -->
+    <section class="py-20 bg-slate-100 px-4">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+            <div class="bg-white p-4 rounded-[2.5rem] shadow-xl">
+                <div class="video-box"><video id="v1" controls class="w-full h-full object-cover"></video></div>
+                <p class="text-center font-bold mt-4" data-hi="सॉफ्टवेयर में क्या है।" data-en="what is Software">सॉफ्टवेयर डेमो 01</p>
+            </div>
+            <div class="bg-white p-4 rounded-[2.5rem] shadow-xl">
+                <div class="video-box"><iframe id="v2" src="" allowfullscreen></iframe>
+</div>
+                <p class="text-center font-bold mt-4" data-hi="सॉफ्टवेयर डेमो" data-en="Software Demo">सॉफ्टवेयर डेमो02</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Plans Section -->
+    <section id="pricing" class="py-20 bg-slate-900 text-white px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-16" data-hi="प्राइसिंग प्लान चुनें" data-en="Select Pricing Plan">प्राइसिंग प्लान चुनें</h2>
+            <div id="plansGrid" class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 5. Other Services Section -->
+    <section id="other-services" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16 italic" data-hi="अन्य बेहतरीन समाधान" data-en="More Solutions">अन्य बेहतरीन समाधान</h2>
+            <div id="serviceGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <span class="text-2xl font-black text-emerald-400"><span id="footPrefix"></span><span id="footSuffix" class="text-white"></span></span>
+                <p class="mt-4 text-slate-400 text-sm" data-hi="प्रोफेशनल व्हाट्सएप मार्केटिंग समाधानों के साथ अपना बिजनेस बढ़ाएं।" data-en="Grow your business with professional WhatsApp marketing solutions.">प्रोफेशनल व्हाट्सएप मार्केटिंग समाधानों के साथ अपना बिजनेस बढ़ाएं।</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6" data-hi="जरूरी लिंक्स" data-en="Quick Links">जरूरी लिंक्स</h4>
+                <div class="grid grid-cols-2 gap-4 text-sm text-slate-400">
+                    <a href="#" class="hover:text-emerald-400" data-hi="प्राइवेसी" data-en="Privacy">प्राइवेसी</a>
+                    <a href="#" class="hover:text-emerald-400" data-hi="नियम" data-en="Terms">नियम</a>
+                    <a href="#" class="hover:text-emerald-400" data-hi="रिफंड" data-en="Refund">रिफंड</a>
+                    <a href="#" class="hover:text-emerald-400" data-hi="सपोर्ट" data-en="Support">सपोर्ट</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6" data-hi="संपर्क करें" data-en="Reach Us">संपर्क करें</h4>
+                <p class="text-sm text-slate-400"><i class="fas fa-phone mr-2"></i> +91 7851848679</p>
+                <p class="text-sm text-slate-400 mt-2"><i class="fas fa-envelope mr-2"></i> info@wasoftware.in</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Ad Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t-2 border-emerald-500 shadow-2xl z-[999] py-3 px-4 flex items-center">
+        <div class="more-service-tag" data-hi="अन्य सेवाएं" data-en="Other Services">अन्य सेवाएं</div>
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <p id="bottomAdText" class="text-slate-800 font-bold text-xs md:text-sm ad-fade truncate pr-4">लोड हो रहा है...</p>
+            <a id="adBottomBtn" href="#" class="bg-emerald-600 text-white px-6 py-2 rounded-xl font-black text-[10px] md:text-xs uppercase shadow-lg flex-shrink-0">विजिट</a>
+        </div>
+    </div>
+
+    <!-- Floating WA -->
+    <a href="javascript:location.href=getWALink('Floating')" class="fixed bottom-24 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-[1000] hover:scale-110 transition cursor-pointer">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        function toggleLang() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            renderUI();
+        }
+
+        function updateSiteIdentity() {
+            document.title = `${SITE_CONFIG.siteNamePrefix}${SITE_CONFIG.siteNameSuffix}`;
+            document.getElementById('navPrefix').innerText = SITE_CONFIG.siteNamePrefix;
+            document.getElementById('navSuffix').innerText = SITE_CONFIG.siteNameSuffix;
+            document.getElementById('footPrefix').innerText = SITE_CONFIG.siteNamePrefix;
+            document.getElementById('footSuffix').innerText = SITE_CONFIG.siteNameSuffix;
+        }
+
+        function renderUI() {
+            updateSiteIdentity();
+            document.querySelectorAll('[data-hi]').forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+            document.getElementById('langSwitcher').innerText = currentLang === 'hi' ? 'ENGLISH / हिंदी' : 'हिंदी / ENGLISH';
+
+            // Features Grid
+            const fGrid = document.getElementById('featureGrid');
+            fGrid.innerHTML = '';
+            SITE_CONFIG.features.forEach(f => {
+                const line1Key = currentLang === 'hi' ? 'line1Hi' : 'line1En';
+                const moreKey = currentLang === 'hi' ? 'moreHi' : 'moreEn';
+                fGrid.innerHTML += `
+                    <div class="p-8 rounded-[2rem] ${f.color} feature-card border border-slate-100 shadow-sm text-center">
+                        <div class="text-4xl mb-6"><i class="fas ${f.icon} text-slate-700"></i></div>
+                        <h3 class="text-xl font-black mb-4">${f[currentLang]}</h3>
+                        <p class="text-slate-600 text-sm mb-4">${f[line1Key]}</p>
+                        <div id="m-${f.id}" class="hidden-content text-xs text-slate-400 border-t pt-4 leading-relaxed whitespace-pre-line">${f[moreKey]}</div>
+                        <button onclick="toggleF(${f.id}, this)" class="text-emerald-600 text-xs font-bold my-4 block w-full uppercase underline">
+                            ${currentLang === 'hi' ? 'और देखें' : 'See More'}
+                        </button>
+                        <a href="javascript:location.href=getWALink('${f[currentLang]}')" class="bg-white border border-slate-200 text-slate-700 block py-2 rounded-xl text-[10px] font-black hover:bg-emerald-600 hover:text-white transition uppercase">
+                            ${currentLang === 'hi' ? 'विवरण' : 'Details'}
+                        </a>
+                    </div>
+                `;
+            });
+
+            // Plans Grid
+            const pGrid = document.getElementById('plansGrid');
+            pGrid.innerHTML = '';
+            SITE_CONFIG.plansData.forEach(p => {
+                const isPopular = p.id === 'pro';
+                pGrid.innerHTML += `
+                    <div class="${isPopular ? 'bg-emerald-600 scale-105 shadow-2xl text-white' : 'bg-slate-800 border border-slate-700 text-white'} p-10 rounded-[3rem] relative transition-all feature-card">
+                        ${isPopular ? `<span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-emerald-900 px-6 py-1 rounded-full text-xs font-black uppercase">${currentLang === 'hi' ? 'सबसे लोकप्रिय' : 'Most Popular'}</span>` : ''}
+                        <h3 class="font-bold text-xl">${p[currentLang]}</h3>
+                        <div class="text-5xl font-black mt-8 mb-2 ${isPopular ? 'text-white' : 'text-emerald-400'}">₹${p.price}</div>
+                        <div class="text-sm font-bold mb-6 opacity-70">${currentLang === 'hi' ? p.durationHi : p.durationEn}</div>
+                        <p class="text-sm mb-10 opacity-80 leading-relaxed">${currentLang === 'hi' ? p.descHi : p.descEn}</p>
+                        <a href="javascript:location.href=getWALink('${p[currentLang]}')" class="block ${isPopular ? 'bg-white text-emerald-600' : 'bg-emerald-600 text-white'} py-4 rounded-2xl font-bold uppercase text-sm">
+                            ${currentLang === 'hi' ? 'अभी खरीदें' : 'Buy Now'}
+                        </a>
+                    </div>
+                `;
+            });
+
+            // Services Grid
+            const sGrid = document.getElementById('serviceGrid');
+            sGrid.innerHTML = '';
+            SITE_CONFIG.otherServices.forEach(s => {
+                sGrid.innerHTML += `
+                    <div class="rounded-[2rem] overflow-hidden bg-white border border-slate-100 shadow-lg ${s.color} feature-card">
+                        <img src="${s.img}" class="w-full h-64 object-contain bg-slate-100">
+                        <div class="p-6 text-center">
+                            <h4 class="font-bold mb-4">${s[currentLang]}</h4>
+                            <a href="${s.link}" class="bg-emerald-600 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase">
+                                ${currentLang === 'hi' ? 'ऑर्डर करें' : 'Order Now'}
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleF(id, btn) {
+            const el = document.getElementById(`m-${id}`);
+            if(el.style.display === 'block') {
+                el.style.display = 'none';
+                btn.innerText = currentLang === 'hi' ? 'और देखें' : 'See More';
+            } else {
+                el.style.display = 'block';
+                btn.innerText = currentLang === 'hi' ? 'कम देखें' : 'See Less';
+            }
+        }
+
+        // Ads Logic
+        let midIdx = 0;
+        let bottomIdx = 0;
+        function rotateAds() {
+            const midAd = SITE_CONFIG.midAds[midIdx];
+            const bottomAd = SITE_CONFIG.bottomAds[bottomIdx];
+            const bT = document.getElementById('bottomAdText');
+            const bB = document.getElementById('adBottomBtn');
+            const mT = document.getElementById('midAdText');
+            const mB = document.getElementById('midAdBtn');
+
+            [bT, bB, mT, mB].forEach(el => el.style.opacity = 0);
+            setTimeout(() => {
+                mT.innerText = midAd[currentLang];
+                mB.innerText = midAd[currentLang === 'hi' ? 'btnHi' : 'btnEn'];
+                mB.href = midAd.link;
+
+                bT.innerText = bottomAd[currentLang];
+                bB.innerText = bottomAd[currentLang === 'hi' ? 'btnHi' : 'btnEn'];
+                bB.href = bottomAd.link;
+
+                [bT, bB, mT, mB].forEach(el => el.style.opacity = 1);
+                midIdx = (midIdx + 1) % SITE_CONFIG.midAds.length;
+                bottomIdx = (bottomIdx + 1) % SITE_CONFIG.bottomAds.length;
+            }, 500);
+        }
+
+        window.onload = () => {
+            document.getElementById('v1').src = SITE_CONFIG.video1;
+            document.getElementById('v2').src = SITE_CONFIG.video2;
+            renderUI();
+            rotateAds();
+            setInterval(rotateAds, 5000);
+        };
+    </script>
+</body>
+</html>
