@@ -15,12 +15,24 @@
         .hidden-content { display: none; }
         .ad-fade { transition: opacity 0.5s ease; }
         .video-box { 
-    aspect-ratio: 16 / 9; 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 16 / 9; /* TV screen jaisa aakaar */
     background: #000; 
-    border-radius: 1.5rem; 
+    border-radius: 2rem; 
     overflow: hidden; 
 }
-/* इसमें iframe के लिए कोई खास सेटिंग नहीं थी */
+
+/* Ye hissa video ko poore box mein phaila deta hai */
+.video-box iframe { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100% !important; 
+    height: 100% !important; 
+    border: 0; 
+    display: block;
+}
 
         
         .card-emerald { border-top: 5px solid #10b981; background: #f0fdf4; }
